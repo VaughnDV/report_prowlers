@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container" style="background:#28475C;">
+    <h1 style="color: orange;font-family: 'Lobster', cursive;" align="center">Report Prowlers</h1>
+    <p  style="color: #86CBCC;font-family: 'Satisfy', cursive;" align="center">Powered by YOUR Security</p>
+    <div class="row">
+    {% for filename in filenames %}
+        {% if filename %}
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="{{ filename }}">
+                    <img src="/{{ filename }}" class="img-thumbnail" style="width:300px;height:200px;" />
+                </a>
+            </div>
+            
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

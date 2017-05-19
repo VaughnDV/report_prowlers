@@ -1,0 +1,23 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+{{ super() }}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <h1>Admin Homepage</h1>
+            <p class="lead">
+                For authorized personal only
+                Your IP Address has been logged and is being monitored
+            </p>
+            <p><a href="{{url_for('index')}}" target="_blank">CONTACT US</a>
+            </p>
+
+                <a class="btn btn-primary" href="{{ url_for('security.login') }}">login</a> <a class="btn btn-default" href="{{ url_for('security.register') }}">register</a>
+            </p>
+            <p>
+                <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - My Flask Application</title>
+    <meta name="Description" content="Report prowlers or any suspicious activity in your area, and we will pass it on to the local security services" />
+    <meta name="keywords" content="Report, prowlers, suspicious, strange, scary, weird"></meta>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta property="og:url"                content="'http://www.reportprowlers.co.za/" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Report Prowlers" />
+    <meta property="og:description"        content="Simply let us know via our website of any suspicious activity in your area, and we will pass it on to the local security services"/>
+    <meta property="og:image"              content="http://www.reportprowlers.co.za/static/images/fb_reportprowlers.png" />
+
+    <!-- JQUERY CDN-->
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"/></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- JQUERY Locally -->
+    <!--<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script> -->
+
+
+    <!-- Tether -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <!--<script src="{{ url_for('static', filename='js/tether.min.js') }}"></script> -->
+
+
+    <!-- Bootstrap 4 CDN-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+
+    <!-- Bootstrap 4 LOCAL-->
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" /> -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript LOCAL -->
+    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/bootstrap.min.js') }}" /> -->
+
+
+    <!-- Modernizr -->
+    <script src="{{ url_for('static', filename='scripts/modernizr-2.6.2.js') }}"></script>
+
+    <!-- Local Styles-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <!-- Font Awesome CDN-->
+    <script src="https://use.fontawesome.com/31b2d62f76.js"></script>
+
+
+    <!-- VueJs CDN-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script> -->
+    <script src="{{ url_for('static', filename='js/vue.min.js') }}"></script>
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+
+    <!-- Holder for bootstrap templates -->
+    <script src="{{ url_for('static', filename='js/holder.min.js') }}"></script>
+
+
+</head>
+
+<body>
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '795070350595957',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <nav class="navbar navbar-fixed-top navbar-light navbar-custom">
+      <a class="navbar-brand" href="{{ url_for('index') }}"><i class="fa fa-eye" style="color: #28475C;"></i></a>
+
+        <ul class="nav navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}"><i aria-hidden="true"></i>Home<span class="sr-only">(current)</span></a>
+                </li>
+                {% if  active_page == "index" %}
+                <li class="nav-item">
+                    <a class="nav-link" href=#about><i aria-hidden="true"></i>About<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=#contact><i aria-hidden="true"></i>Contact<span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}"><i aria-hidden="true"></i>About<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}"t><i aria-hidden="true"></i>Contact<span class="sr-only">(current)</span></a>
+                </li>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Report
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="Preview">
+                            <a class="dropdown-item" href="{{ url_for('person') }}">Report a Suspicious Person</a>
+                            <a class="dropdown-item" href="{{ url_for('vehicle') }}">Report a Suspicious Vehicle</a>
+                            <a class="dropdown-item" href="{{ url_for('group') }}">Report a Suspicious Group</a>
+                            <a class="dropdown-item" href="{{ url_for('image') }}">Upload Picture of Suspect</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle navbar-right" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="Preview">
+                            <a class="dropdown-item" href="{{ url_for('areapics') }}">View uploaded pictures</a>
+                            <a class="dropdown-item" href="{{ url_for('register') }}">Subscribe to paid service</a>
+                            <a class="dropdown-item" href="#">Coming soon</a>
+                            <a class="dropdown-item" href="{{ url_for('terms') }}">Terms and Conditions</a>
+                    </div>
+                </li>
+
+            {% if current_user.has_role('superuser') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin"></span>Admin</a>
+                </li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('security.logout') }}"></span>Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('security.login') }}">Login</a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+
+    <div class="container body-content">
+        <!-- Flash flashed messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-info">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% block body %}
+        {% endblock %}
+        <hr />
+        <footer>
+            <p>&copy; {{ year }} - <i class="fa fa-eye" style="color: orange;"></i>&nbsp; Report Prowlers</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="/static/scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/scripts/respond.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"/></script> -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<!--<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script> -->
+
+<!-- Tether -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<!--<script src="{{ url_for('static', filename='js/tether.min.js') }}"></script> -->
+
+
+<!-- Bootstrap 4 Alpha JS -->
+<!-- IMPORTANT: Don't use this .js file in production. Use Bootstrap 3 until Bootstrap 4 is released. -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+<!-- <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+
+<script>
+// Initialize tooltip component
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+// Initialize popover component
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+
+<script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+// ]]></script>
+    <div id="loading"></div>
+    <div id="content">
+    {% block scripts %}{% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+{% extends "layout.html" %}
+{% set active_page = "index" %}
+{% block body %}
+
+
+
+<div class="jumbotron" style="background:#28475C;">
+    <h1 style="color: orange;font-family: 'Lobster', cursive;" align="center">Report Prowlers<br><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div></h1>
+
+    <p  style="color: #86CBCC;font-family: 'Satisfy', cursive;" align="center">Powered by your local Security Services</p>
+    <p align="center"><a href="{{ url_for('person') }}" class="btn btn-primary btn-block">Report a suspicious PERSON</a></p>
+    <p align="center"><a href="{{ url_for('vehicle') }}" class="btn btn-danger btn-block">Report a suspicious VEHICLE</a></p>
+    <p align="center"><a href="{{ url_for('group') }}" class="btn btn-success btn-block">Report a suspicious GROUP</a></p>
+    <p align="center"><a href="{{ url_for('image') }}" class="btn btn-warning btn-block">Upload a PICTURE</a></p>
+    <p align="center"><a href=#contact class="btn btn-info btn-block">Contact us directly</a></p>
+</div>
+
+<!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <br>
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                <br><br>
+
+                    <h2 style="font-family: 'Lobster', cursive;">Please read</h2>
+                    <br>
+                    <p style="font-family: 'Open Sans', sans-serif;">This site is for reporting SUSPECTED PROWLERS only. PLEASE DO NOT REPORT CRIMES on this site, call POLICE on Tel: 10111.<br><br> Information you supply will be stored and compared with other reports in your area.</p>
+                    <br>
+                    <h2 style="font-family: 'Lobster', cursive;">What does reportprowlers do exactly?</h2>
+                    <br>
+                        <a class="thumbnail" href="./static/images/reportprowlers.png">
+                            <img src="./static/images/reportprowlers.png" class="img-thumbnail" style="width:300px;height:200px;" />
+                        </a>
+                    <p style="font-family: 'Open Sans', sans-serif;">A community driven communication system, whereby users can simply report suspected prowlers, vehicles, groups and photos to their local security services, who can then in turn, be at the right place at the time to prevent, and deter crimes in our areas.<br>
+                    <p>Report Prowlers is an internet based service designed to advance security in neighborhoods through simplified online communication between the neighborhood's residents, and the local security services. <br><br></p>
+                    </p>
+                    <br>
+                    <h2 style="font-family: 'Lobster', cursive;">Who can use this service?</h2>
+                    <br>
+                    <p style="font-family: 'Open Sans', sans-serif;">Any one who signs up can send reports free of charge. Subscribers (such as Security companies) support this system financially through monthly subscription, and recieve the prowler reports.<br><br>
+                    </p>
+                    <br>
+                    <h2 style="font-family: 'Lobster', cursive;">What are prowlers?</h2>
+                    <br>
+                    <p style="font-family: 'Open Sans', sans-serif;">A prowler is a person who is in your area with intent of seeking our criminal opportunities.<br><br>
+                    </p>
+                    <br>
+                      <h2 style="font-family: 'Lobster', cursive;">How it works:</h2>
+                      <p><br><strong>USERS = Area's Residents and Security Personal on patrol</strong><br><br>
+                      Users login, and send reports of suspicious activity in their area. Its free, and easy to use. From the USERS perspective, the process is as follows:<br><br>
+                      </p>
+                      <p class="text-center" style="color: #28475C;">Login > Send Report > Safer Neighborhood</p>
+                      <br><br>
+                      </p>
+                      <p><strong>SUBSCRIBERS = Area's Security Services: </strong><br><br>
+                      Receive these reports, with additional intelligence on comparisons with other recent reports, recommended response level. Subscribers pay a monthly subscription fee for each area they wish to monitor:<br><br></p>
+                      <p class="text-center" style="color: #28475C;">Monitor Emails > Receive Reports > Allocate Appropriate Response</p>
+                      <br><br>
+                      <h2 style="font-family: 'Lobster', cursive;">Built to be:</h2>
+                      <p>
+                      <ul>
+                        <li>Fast and reliable, using Google's Emailing Servers</li>
+                        <li>Easy to use, and mobile phone friendly</li>
+                        <li>Stable using well established technologies</li>
+                        <li>Free for Users to send reports</li>
+                        <li>Cost effective subscription fees at R150/Month per subscribed area</li>
+                        <li>Helpful in your marketing stratergy to grow your client base</li>
+                        <li>Promoted on social media platforms such as facebook and twitter ** Campaigns already under way</li>
+                        <li>Easy to setup: No installation, no additional hardware, no proprietary software</li>
+                        <li>A proactive approach in preventing incedents in your areas</li>
+                        <li>Helpful in deciding where to allocate resources</li>
+                        <li>Structured and easy to understand reports</li>
+                        <li>Helpful in building intelligence</li>
+                        <li>Available everywhere in South Africa</li>
+                      </ul>
+                      <br><br></p>
+
+                      <ph2>Click <a href="{{ url_for('subscribe')}}"> here </a>to subscribe or to recieve additional information</p>
+
+                    <br>
+                    <h2 style="font-family: 'Lobster', cursive;">What do we do with the information you provide?</h2>
+                    <br>
+                    <p>The information is recorded, compared to similar reports, formatted and sent to subscribing security companies for that area. The reports are stored in our databases for 72hours before they are archived</p>
+                    <br>
+                    <p>Soon we will introduce facial recognition in comparing the image reports, with the intent of identifying known offenders early, and a mobile app to provide a more convenient user experience</p>
+                    <br>
+                    <p>What makes this system special is that it is uses realtime data, driven in unity with the people, homes and families we aim to best protect. Security personal can use the same system, thus all the information is readily availible, allowing patterns to be identified faster, ensuring the correct level of response at the right time.</p>
+                    <br>
+                    <p>The ReportProwlers system is designed to run concurrently with existing security operations or initiatives. This enables us to provide this service to other security companies that wish to support and join our quest for safety without compromise.</p>
+                    <br>
+                    <p>We believe this is the future of the security industry however and its still under active development. Please do not hesitate to contact us with your suggestions on how we can improve out service to you.</p>
+                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Section -->
+    <section id="contact">
+            <div class="container">
+            <div class="row">
+            <br><br><br>
+                <div class="col-lg-12 text-center">
+                    <h2 style="font-family: 'Lobster', cursive;">Contact us.</h2>
+                </div>
+
+            <div class="row">
+
+            </div>
+                <div class="container contact">
+                <div class="row contact-fields">
+                    <div class="col-md-6 col-md-offset-3">
+                    <br>
+                               <!-- Contact Section messages -->
+                {% if success %}
+                  <div class="alert alert-success">Your message has been sent.</div>
+                {% else %}
+
+                {% for message in form.email.errors %}
+                  <div class="flash alert alert-danger">{{ message }}</div>
+                {% endfor %}
+
+                {% for message in form.message.errors %}
+                  <div class="flash alert alert-danger">{{ message }}</div>
+                {% endfor %}
+
+
+        <form action="{{ url_for('index') }}" method="post" name="contact" role="form">
+                {{form.hidden_tag()}}
+                <div class="from-group">
+                {{ form.email(class_="form-control", placeholder="Email", **{'data-validation':'email'}) }}
+                </div>
+                <br />
+                <div class="form-group">
+                {{ form.message(class_="form-control", placeholder="Message", **{'data-validation':'required'}) }}
+                </div>
+                <div class="form-group">
+                {{ form.recaptcha }}
+                </div>
+                <div class="form-inline row">
+                    <div class="form-group col-sm-6 col-sm-offset-6">
+                        <!-- {{ form.submit(class="btn btn-default btn-block") }}-->
+                        <input class="btn btn-info" type="submit" name="submit" value="Submit" onclick="loading();">
+                    </div>
+                </div>
+
+
+        </form>
+                {% endif %}
+        <br><br>
+        <address>
+            Leisure Bay<br /> Kwa-Zulu Natal<br />
+            South Africa<br /> 4278<br /><br />
+            <strong>Phone:</strong>
+            +27(0)39 319 1088
+        </address>
+
+        <address>
+
+            <strong>Email:</strong> <a href="mailto:reportprowlers@gmail.com">reportprowlers@gmail.com</a>
+        </address>
+                </div><!-- ./col-md-6 -->
+                </div><!-- ./ row -->
+
+        </div><!-- ./ contact -->
+        </div>
+    </div>
+
+
+    </section>
+
+
+{% endblock %}

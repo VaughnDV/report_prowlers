@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container" style="background:#28475C;">
+    <h1 style="color: orange;font-family: 'Lobster', cursive;" align="center">Report Prowlers</h1>
+    <h3 style="color: #0275D8;" align="center">Please read before subscribing</h3>
+    <p  style="color: #86CBCC;" align="center">Report Prowlers is an internet based communication service that allows a user to report information on suspected prowlers effortlessly, and conveniently, to their local Security Company or Neighborhood Watch</p>
+    <p  style="color: #86CBCC;" align="center">Subscribers (e.g: Security Companies) support the service financially and guide the continual efforts to improve the service</p>
+    <h3 style="color: #5BC0DE;" align="center">Upcoming Features</h3>
+    <p  style="color: #86CBCC;" align="center">User registration via facebook, gmail or twitter
+                                            <br>Online payment system
+                                            <br>Restful API access
+                                            <br>Mobile app for Android and Ios
+                                            <br>Facial recognition
+                                            <br></p>
+    <h3 style="color: #D9534F;" align="center">Pricing</h3>
+    <p  style="color: #86CBCC;" align="center"> The subscription price for EACH area is R150.00.<br> Payments are controlled by you the subscriber.</p>
+
+    <h3 style="color: #5CB85C;" align="center">How the system works</h3>
+    <p  style="color: #86CBCC;" align="center">Users register and Report Prowlers for free.
+                                            <br>Subscribers receive the users reports via email.
+                                            <br>The email will also note similar or recent reports for that area.
+                                            <br>This is to aid the subscriber in deciding the level of response to any given report.
+                                            <br>
+    <input type="checkbox" id="check" name="check" value="checked"><label style="color:#F0AD4E;""><i class="fa fa-arrow-left" aria-hidden="true"></i> Select to recieve and example email alert</label></p>
+
+
+        <form action="{{ url_for('example') }}" method="post" id="subscriber" role="form" style="display:none;">
+
+
+                {{eform.hidden_tag()}}
+                <div class="from-group" id="emailShow" style="color: #86CBCC;">
+                {{ eform.email(class_="form-control", placeholder="Email Address ** Required", **{'data-validation':'email'}) }}
+                </div>
+                <br/>
+                <br></label>
+                <div class="form-inline row" id="submitShow">
+                    <div class="form-group col-sm-6 col-sm-offset-6">
+                {{ eform.submit(class="btn btn-default") }}
+                    </div>
+                </div>
+                <br>
+        </form>
+
+
+    <h3 style="color: #5BC0DE;" align="center">Subscribing</h3>
+    <p  style="color: #86CBCC;" align="center">Should you wish to subcribe to email alerts everytime there is a report in the your area or areas, please complete the form below.</p>
+
+
+
+   	<div class="col-md-6 col-md-offset-3">
+
+            {% if success %}
+
+              <div class="alert alert-success">Your Subscription has been sent.</div>
+
+            {% else %}
+
+                {% for message in form.province.errors %}
+                  <div class="flash alert alert-danger">{{ message }}</div>
+                {% endfor %}
+
+
+        <form action="{{ url_for('subscribe') }}" method="post" name="subscriber" role="form">
+
+                {{form.hidden_tag()}}
+                <div class="from-group">
+                {{ form.name(class_="form-control", placeholder="Full name  ** Required", **{'data-validation':'name'}) }}
+                </div>
+                <br>
+                <div class="from-group">
+                {{ form.email(class_="form-control", placeholder="Email Address ** Required", **{'data-validation':'email'}) }}
+                </div>
+                <br />
+                <div class="form-group">
+                {{ form.company(class_="form-control", placeholder="Company or Organization (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.province(class_="form-control", placeholder="Province (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.area1(class_="form-control", placeholder="Area 1 (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.area2(class_="form-control", placeholder="Area 2 (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.area3(class_="form-control", placeholder="Area3 (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.area4(class_="form-control", placeholder="Area 4 (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.area5(class_="form-control", placeholder="Area 5 (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.area6(class_="form-control", placeholder="Area 6 (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.remarks(class_="form-control", placeholder="Comments (Optional)") }}
+                </div>
+                <div class="form-group">
+                {{ form.recaptcha }}
+                </div>
+                <div class="form-group">
+                <input type="checkbox" id="terms" name="terms" value="checked"><label style="color:white;"">By checking this checkbox you agree to the <a href="{{url_for('terms')}}">Terms of service<i class="fa fa-handshake-o" aria-hidden="true"></i></a>
+                </div>
+                <div class="form-inline row">
+                    <div class="form-group col-sm-6 col-sm-offset-6" id="agreed" style="display:none;">
+                        <!-- {{ form.submit(class="btn btn-default btn-block") }}-->
+                        <input class="btn btn-success" type="submit" name="submit" value="Submit" onclick="loading();">
+                    </div>
+                </div>
+                <br>
+        </form>
+
+
+        {% endif %}
+    </div>
+</div>
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+$('#check').click(function() {
+    $("#subscriber").toggle(this.checked);
+});
+$('#terms').click(function() {
+    $("#agreed").toggle(this.checked);
+});
+</script>
+
+{% endblock %}
+
+
+
+
