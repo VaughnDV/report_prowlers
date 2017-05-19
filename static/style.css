@@ -1,0 +1,56 @@
+div#content {
+    display: none;
+    }
+ 
+div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url(/static/loadingimage.gif) no-repeat;
+    cursor: wait;
+    }
+
+
+body{
+    padding-top: 70px;
+    /*background: lightblue;
+    /*background-image: url("ship.jpg"); */
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+#info {
+  position: absolute;
+  left: 5%;
+}
+body {
+  padding: 0;
+    margin: 0;
+    font-family: 'Lato';
+  text-align: center;
+}
+.section {
+    padding-top: 40px;
+    font-size: 1em;
+    text-align: center;
+    background: #5496FF;
+    width: 100%;
+    height: 1200px;
+    color: #FFFFFF;
+  
+    -webkit-transition: background 0.5s ease-in-out;
+        transition: background 0.5s ease-in-out;
+}

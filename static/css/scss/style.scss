@@ -1,0 +1,395 @@
+@import "compass/css3";
+
+$ship: #fff;
+$blue: #444349;//#34aadc;
+
+//fonts
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,900); 
+$roboto: 'Roboto', sans-serif;  
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: $blue;
+}
+
+h1,
+p {
+  color: #fff;
+  font-family: $roboto;
+  font-size: 4em; 
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+h1 {
+   background: rgba(0,0,0,.1) url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/65463/White-Large_codepen.png') no-repeat; 
+  background-size: 100%;
+  background-position: 50% 50%;
+  border: 1px solid;
+  display: block;
+  height: auto;
+  margin: 1em auto .25em; 
+  max-width: 25em;
+  padding-bottom: .25em;
+  text-indent: -9999px;
+  width: 100%;
+  
+  @media(max-width: 500px) { 
+    margin: .25em auto;
+  }
+  
+  @media(max-height: 500px) { 
+    margin: .25em auto;
+  }
+}
+
+
+p {
+  font-size: 2em;
+  font-weight: 100;
+}
+
+.bg {
+  //background-image: linear-gradient(135deg, rgba($blue,0.9) 0%,rgba(83,109,254,0.9) 100%), url('https://farm8.staticflickr.com/7337/10007365255_6d0acb9c58_z.jpg');
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/14104/stardust.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+.sceneWrap {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 400px;
+  max-height: 575px;
+  padding-top: 2em;
+  width: 100%;
+  position: relative;
+  @include animation(load-animation .65s linear);    
+  
+  @media(max-width: 500px) { max-height: 350px; }
+}
+
+
+.jet-pack {
+  //container for the actual jet
+  display: block;
+  font-size: 1rem; 
+  left: 50%;
+  position: absolute; 
+  text-align: center;
+  top: 70%;
+  transform: translate(-50%, -50%) rotateZ(5deg);
+  //@include animation(up-down-animation .5s linear infinite alternate-reverse);
+  
+  @media(max-width: 500px) { font-size: .75rem; } 
+   @media(max-height: 387px) { transform: translate(-50%, 0%) rotateZ(5deg); }
+  
+  //extended wings
+  &:before {
+    background: $ship;
+    content: '';
+    display: inline-block;
+    height: 2.25em;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, 25%); 
+    width: 6em;
+  }
+  //extended wings blue cut out
+  &:after {
+    background-image: linear-gradient(rgba(#444349,1) 0%,rgba(#444349,0.9) 50%,rgba(83,109,254,0)  100%);
+    //background: #4380D7; //$blue;
+    border-radius: 15%;
+    content: '';
+    display: inline-block;
+    height: 8em;
+    left: 50%;
+    position: absolute;
+    top: 50%;  
+    transform: translate(-50%, 20%);
+    width: 5.65em; 
+    @media(max-width: 500px) { background: #444349; }//#4289D5;  
+  }
+  
+}
+
+.jet-body {
+  //main body
+  background: $ship;
+  border-top-right-radius: 60% 50%;
+  border-top-left-radius: 60% 50%;
+  border-bottom-left-radius: 60% 50%;
+  border-bottom-right-radius: 60% 50%;
+  display: inline-block; 
+  height: 8.5em;
+  position: relative;
+  width: 3.25em;
+  z-index: 3;
+  
+  &:after {
+    //exhaust
+    border-left: .65em solid transparent;
+    border-right: .65em solid transparent;
+    border-top: 1.75em solid  lighten(#444349 /*$blue*/, 25%); 
+    content: "";
+    display: inline-block; 
+    height: .5em;
+    left: 50%;
+    position: absolute;
+    top: 9em;
+    transform: translate(-50%, 0);
+    z-index: 6;
+    @include animation(flame-animation .2s linear infinite);
+  }
+  //exhaust pipe
+  &:before {
+    border-left: .5em solid transparent;
+    border-right: .5em solid transparent;
+    border-bottom: 1.1em solid $ship;
+    content: "";
+    display: inline-block; 
+    left: 50%;
+    position: absolute;
+    top: 8em; 
+    transform: translate(-50%, 0);
+    width: .2em;
+    z-index: 10; 
+  }
+}
+
+.jet-wing-top-circle {
+  //actually the cicle window
+  background: #444349;//$blue;
+  border-radius: 50%;
+  box-shadow: inset -.14em -.2em .25em rgba($ship, .24), inset -.4em -.2em .25em rgba($ship, .4), inset -.4em -.2em 1em rgba($blue, .5);  
+  display: block;
+  height: 1.7em;
+  left: 50%;
+  position: absolute;
+  top: 2.5em;
+  transform: translate(-50%, 0);
+  width: 1.7em;
+  //top of the wings
+  &:before,
+  &:after {
+    border-bottom: .3em solid transparent;
+    border-top: 1.5em solid transparent;
+    border-right: 1.8em solid $ship;
+    content: "";
+    height: 0;
+    left: -1.9em;
+    position: absolute;
+    top: .9em;   
+    transform: rotate(-8deg);
+    width: 0; 
+  }
+  //fliping wing top to right
+  &:after {
+    border-bottom: .3em solid transparent;
+    border-top: 1.5em solid transparent;
+    border-left: 1.8em solid $ship;
+    border-right: 0;
+    left: auto;
+    right: -1.9em;
+    transform: rotate(8deg);
+  }
+}
+
+//smoke plume
+.smoke {
+  background: $ship;
+  border-left: 1px solid lighten($blue, 15%);
+  border-right: 1px solid lighten($blue, 15%);
+  bottom: -75%;
+  height: 6em;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 1em;
+  z-index: 2;
+  //streaks in plume
+  &:before,
+  &:after {
+    background: $ship;
+    border-left: 1px solid rgba($blue, .05);
+    border-right: 1px solid rgba($blue, .02);
+    content: '';
+    height: 6em;
+    left: 50%;
+    position: absolute;
+    width: .2em;
+  }
+  
+  &:after {
+    left: auto;
+    right: 50%;
+  }
+  
+  &-bubble,
+  &-bubble:before,
+  &-bubble:after {
+    background: $ship;
+    border-radius: 50%;
+    bottom: -1em;
+    display: block;
+    height: 3em;
+    left: -1em;
+    position: absolute;
+    width: 3em;
+    @include animation(smoke-animation .3s linear infinite alternate-reverse);
+  }
+  
+  &-bubble:after {
+    bottom: -.25em;
+    content: '';
+    height: 2.5em;
+    width: 2.5em;
+    @include animation-delay(.1s);
+  }
+  
+  &-bubble:before {
+    bottom: -.25em;
+    content: '';
+    height: 2.15em;
+    left: auto;
+    right: -.5em;
+    width: 2.15em;
+    @include animation-delay(.5s);
+  }
+}
+
+.needle {
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
+  border-bottom: 3.1em solid $ship;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: -10.25em;  
+  transform: translate(-50%, 0);
+  width: 0;
+  z-index: -1;
+  
+  //circle
+  &:after {
+    border: 1px solid rgba($ship, .3); 
+    border-radius: 50%;
+    box-shadow: inset 0 -.0625em -.125em $ship, inset 0 -.9375em .3125em rgba($ship, .9), inset 0 -1.25em .625em rgba($blue, .5);  
+    content: "";
+    height: 14em;
+    left: 50%;
+    position: absolute;
+    top: 100%; 
+    transform: translate(-50%, 28%);
+    width: 14em;
+    @include animation(up-down-animation .15s linear infinite alternate-reverse);
+  }
+}
+
+.flag {
+  background: rgba($ship, .95);  
+  border-radius: 50%;
+  height: 2em;
+  left: -.05em;
+  position: absolute;
+  top: 5em;
+  transform: rotateZ(-25deg);
+  width: 2em;
+  @include animation(round-animation 2s linear infinite alternate-reverse); 
+  
+  
+  &:before,
+  &:after {
+    background: rgba($ship, .95);  
+    border-radius: 50%;
+    content: "";
+    height: 1.5em;
+    position: absolute;
+    right: 2em;
+    top: -.5em;
+    width: 1.5em;
+  }
+  
+  &:after {
+    right: 0;
+    top: -.5em;
+  }
+}
+
+
+
+//keyframes
+@include keyframes(load-animation) {
+  0% {
+    opacity: 0;
+    @include scale(.75); 
+  }
+  
+  100% {
+    opacity: 1;
+    @include scale(1);
+  }
+}
+
+@include keyframes(flame-animation) {
+  100% {
+    border-top-width: 1.9em;
+    border-left-width: .5em;
+    border-left-width: .5em;
+  }
+}
+
+@include keyframes(smoke-animation) {
+  0% {
+    @include scale(.95);
+  }
+  
+  100% {
+    @include scale(1);
+  }
+}
+
+@include keyframes(round-animation) {
+  0% {
+    left: .5em;
+    opacity: .5;
+    top: 5em;
+    @include scale(.95);
+  }  
+  100% {
+    left: -0.5;
+    opacity: 1;
+    top: 5em;
+    @include scale(1);
+  }
+}
+
+@include keyframes(up-down-animation) {
+  0% {
+    box-shadow: inset 0 -1px 2px rgba($ship, .95), inset 0 -15px 5px rgba($ship, .9), inset 0 -20px 10px rgba($blue, .5);
+  }
+  
+  100% {
+    box-shadow: inset 0 -1px 2px $ship, inset 0 -17px 5px rgba($ship, .95), inset 0 -22px 12px rgba($blue, .6);
+  }
+}
+
