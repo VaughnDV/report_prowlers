@@ -27,7 +27,7 @@ SUBSCRIBERS may spread the word for USERS to use this servie in their communitie
 
 #Clone
 
-	TBA
+	git clone https://github.com/VaughnDV/report_prowlers.git
 
 #Install requirements
 
